@@ -1,6 +1,6 @@
 // API service for interacting with the backend
 
-const API_URL = 'http://localhost:3001/api';
+const API_URL = '/api';
 
 // Generic fetch function with error handling
 async function fetchApi<T>(
