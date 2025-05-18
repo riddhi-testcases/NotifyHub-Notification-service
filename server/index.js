@@ -18,7 +18,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up middleware
-app.use(cors());
+app.use(cors({
+  origin: true,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
@@ -48,7 +54,7 @@ app.use(errorHandler);
 setupQueues();
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
 
